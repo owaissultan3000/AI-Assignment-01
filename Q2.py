@@ -1,4 +1,4 @@
-# $ -- Queen
+# * -- Queen
 # 0 -- path
 
 import sys
@@ -6,7 +6,7 @@ import sys
 
 def canPlace(board, n, current_col, current_row):
     for j in range(0, current_col):  # block right , left
-        if board[current_row][j] == '$':
+        if board[current_row][j] == '*':
             return False
 
     diagonal_i = current_row
@@ -15,7 +15,7 @@ def canPlace(board, n, current_col, current_row):
     while True:  # block diagonal down
         if diagonal_i >= n or diagonal_j < 0:
             break
-        if board[diagonal_i][diagonal_j] == '$':
+        if board[diagonal_i][diagonal_j] == '*':
             return False
         diagonal_i += 1
         diagonal_j -= 1
@@ -26,7 +26,7 @@ def canPlace(board, n, current_col, current_row):
     while True:  # block diagonal up
         if diagonal_i < 0 or diagonal_j < 0:
             break
-        if board[diagonal_i][diagonal_j] == '$':
+        if board[diagonal_i][diagonal_j] == '*':
             return False
         diagonal_i -= 1
         diagonal_j -= 1
@@ -41,7 +41,7 @@ def nQueen(board, n, current_col):
             if canPlace(board, n, current_col, i):
                 flag = 1
                 placed[current_col] = i
-                board[i][current_col] = '$'
+                board[i][current_col] = '*'
                 break
 
         if flag == 0:  # backtrack
